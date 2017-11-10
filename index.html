@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!--ESTILS DE BOOTSTRAP -->
+	<link href="css/bootstrap.min.css" rel="stylesheet"/>
+	<link type="text/css" href="css/estil.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/md5.js"></script>
+	<!--<script>
+	$(function(){
+	
+		var email_local = localStorage.getItem("Email");
+		$(document).on("ready", function(){
+			$("#Email").val(email_local);
+			
+			$("#ferlogin").click(function(){
+				var fEmail = $("#Email").val();
+				var fPassw = $("#Passw").val();
+				
+				$("#Email").val("");
+				$("#Passw").val("");
+
+				$.ajax({type: "POST",
+					url:"http://www.grupllobet.com/apptest/App1/login.php",
+					data:({Email: fEmail, Passw: fPassw}),
+					cache: false,
+					dataType: "text",
+					success: Enviar
+				});
+			});
+			function Enviar(data){
+				var dades = data.split("#");
+				if (dades[2] != true) {
+					
+					alert("Login incorrecte");
+
+				}
+				else{
+					window.localStorage.setItem("Id", dades[0]);
+					window.localStorage.setItem("Email", dades[1]);
+					location.href="html/mapa.html";
+				}				
+				/** GUARDAMOS DATOS EN localStorage **/		
+				//window.localStorage.setItem("id_user", data.id_user);
+				//window.localStorage.setItem("username", data.username);
+			}
+		});
+	});
+	</script>-->
+</head>
+<body id="Cos">
+	<div id="Login">
+		<div id="Login1">
+			<h2>Login</h2>
+		</div>
+		<div id="Login2">
+			<form id="FormLogin">
+				<table>	
+					<tr>
+						<td><label for="Email">Email:</label></td>
+						<td><input type="text"  name="Email" id="Email" value=""/></td>
+					</tr>
+					<tr>
+						<td><label for="Passw">Password:</label></td>
+						<td><input type="password" name="Passw" id="Passw" value="" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" onclick="location.href='html/mapa.html';" value="Entrar" /></td>
+					</tr>
+				</table>
+			</form>
+			</br>
+		</div>
+		<div id="Login3">
+			<a href="html/registre.html">Encara no t'has registrat? Clica aquest enllaç!</a>
+		</div>
+	</div>	
+</body>
+</html>

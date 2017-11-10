@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!--ESTILS DE BOOTSTRAP -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+	<link type="text/css" href="../css/estil.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/md5.js"></script>
+	<script>
+	$(function(){
+		$(document).on("ready", function(){
+		
+			$.ajax({type: "POST",
+				url:"localhost/veure_poblacions.php",
+				cache: false,
+				dataType: "text",
+				success: Buscar_poblacions
+			});
+			function Buscar_poblacions(data){
+				$('#poblacio').html(data);
+			}
+			
+			$("#ferregistre").click(function(){
+				
+				var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+				var fEmail = $("#Email").val();
+				var fPassw = $("#Passw").val();
+				var fPassw2 = $("#Passw2").val();
+				if(fEmail == ""){
+					alert('Email necessari');
+					$("#Email").focus();
+				}else{
+					if(!expresio.test(fEmail)){	
+						$("#Email").val("");
+						alert('Email no vàlid');
+						$("#Email").focus();
+					}else{
+					
+						if(fPassw != fPassw2){						
+							$("#Passw").val("");
+							$("#Passw2").val("");
+							alert("Contrasenyes diferents");
+						}else{
+							$("#Email").val("");
+							$("#Passw").val("");
+							$("#Passw2").val("");
+							$.ajax({type: "POST",
+								url:"localhost/registre.php",
+								data:({Email: fEmail, Passw: fPassw}),
+								cache: false,
+								dataType: "text",
+								success: Enviar
+							});
+							function Enviar(data){
+								alert(data);
+								location.href="../index.html";
+							}
+						}
+					}
+				}
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="formulari">
+		<h1>REGISTRE</h1>
+		<form method="POST">
+			<table>
+			<tr>
+				<td><label>Email:</label></td> 
+				<td><input type="text" name="Email" id="Email" value=""></td>
+			</tr>
+			<tr>
+				<td><label>Contrasenya:</label></td> 
+				<td><input type="password" name="Passw" id="Passw" value=""></td>
+			</tr>
+			<tr>
+				<td><label>Repeteix contrasenya:</label></td> 
+				<td><input type="password" name="Passw2" id="Passw2" value=""></td>
+			</tr>
+			<tr>
+				<td><label>Població:</label></td> 
+				<td><div id="poblacio"></div></td>
+			</tr>
+			<tr>
+				<td><button type="button" onclick="window.location.href='../index.html'">Tornar</button></td>
+				<td><button type="button" id="ferregistre">OK</button></td>
+			</tr>
+			</table>
+		</form>	
+	</div>
+</body>
+</html>

@@ -16,12 +16,12 @@
 			left:0px;
 			position:absolute;
 			display: none;
-		}*/
+		}
 		#refresh{
 			bottom:0px;
 			right:0px;
 			position:absolute;
-		}
+		}*/
 		#form{
 			bottom:0px;
 			left:0px;
@@ -133,7 +133,7 @@
 				//VARIABLE PEL MARCADOR
 				var marcador = new google.maps.Marker({
 					position: latlng, //POSICIO DEL NOU MARCADOR
-					icon:'../imatges/man2.png',
+					icon:'../imatges/green-dot.png',
 					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 				});
@@ -285,12 +285,12 @@
 				
 			}
 			
-			function Refrescar(){       
+			/*function Refrescar(){       
 
 				location.reload();
 			}
 
-			setInterval(Refrescar,30000);
+			setInterval(Refrescar,30000);*/
 			
 		
 			
@@ -303,7 +303,7 @@
 	<div data-role="page" id="paginaMapa" data-url="map-page">
 		<div id="mapa"></div>
 		
-		<button id="refresh" onclick=location.reload()>Refrescar</button>
+		<!--<button id="refresh" onclick=location.reload()>Refrescar</button>-->
 		
 		<input type="button" id="llista" onclick="location.href='llistat_ofertes.html';" value="Ofertes" />
 		

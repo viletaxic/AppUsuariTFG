@@ -70,7 +70,7 @@
 		var marcadors_bd = [];
 		var mapa = null;
 		//FUNCIO PER TREURE MARCADORS DEL MAPA
-		function treure_marcadors(llista)
+		/*function treure_marcadors(llista)
 		{
 			//RECORRE L'ARRAY DE MARCADORS	
 			for(i in llista)
@@ -78,7 +78,7 @@
 				//TREURE MARCADOR DEL MAPA
 				llista[i].setMap(null);
 			}
-		}
+		}*/
 		
 		$(document).on("ready", function(){
 			
@@ -206,12 +206,12 @@
 											//UBICAR EL MARCADOR AL MAPA
 											marca.setMap(mapa);
 											
-											/*var infowindow = new google.maps.InfoWindow({
+											var infowindow = new google.maps.InfoWindow({
 												position: posi,
-												content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+												content: 'Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
 											});
 										
-											infowindow.open(mapa,marca);*/
+											infowindow.open(mapa,marca);
 										
 										
 										}else{

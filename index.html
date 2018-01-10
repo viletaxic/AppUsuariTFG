@@ -8,47 +8,43 @@
 	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/md5.js"></script>
-	<!--<script>
+	<script>
 	$(function(){
-	
-		var email_local = localStorage.getItem("Email");
 		$(document).on("ready", function(){
-			$("#Email").val(email_local);
-			
 			$("#ferlogin").click(function(){
+				alert("click");
 				var fEmail = $("#Email").val();
 				var fPassw = $("#Passw").val();
 				
 				$("#Email").val("");
 				$("#Passw").val("");
-
 				$.ajax({type: "POST",
-					url:"http://www.grupllobet.com/apptest/App1/login.php",
+					url:"http://158.109.8.89/php/login_users.php",
 					data:({Email: fEmail, Passw: fPassw}),
 					cache: false,
-					dataType: "text",
+					dataType: "html",
 					success: Enviar
 				});
 			});
 			function Enviar(data){
+				
 				var dades = data.split("#");
 				if (dades[2] != true) {
 					
 					alert("Login incorrecte");
-
 				}
 				else{
-					window.localStorage.setItem("Id", dades[0]);
+					window.localStorage.setItem("IdUser", dades[0]);
 					window.localStorage.setItem("Email", dades[1]);
-					location.href="html/mapa.html";
-				}				
+					window.location.href="html/mapa.html";
+				}			
 				/** GUARDAMOS DATOS EN localStorage **/		
 				//window.localStorage.setItem("id_user", data.id_user);
 				//window.localStorage.setItem("username", data.username);
 			}
 		});
 	});
-	</script>-->
+	</script>
 </head>
 <body id="Cos">
 	<div id="Login">
@@ -68,7 +64,8 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" onclick="location.href='html/mapa.html';" value="Entrar" /></td>
+						<!--<td><input type="button" onclick="location.href='html/mapa.html';" value="Entrar" /></td>-->
+						<td><button type="button" id="ferlogin">Entrar</button></td>
 					</tr>
 				</table>
 			</form>

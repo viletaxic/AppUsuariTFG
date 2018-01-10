@@ -1,23 +1,15 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <head>
 <style>
-	table {
-		border-collapse: collapse;
-		width: 100%;
+	#llistat{
+		left:2%;
+		position:absolute;
 	}
-	th{
-	 background-color: orange;
-	}
-	td, th {
-		border: 2px solid black;
-		text-align: left;
-		padding: 8px;
-	}
-	tr{
-	 background-color: #FFFF66;
-	}
-	tr:nth-child(even) {
-		background-color: #FFCC66;
+	#Tornar{
+		bottom:0px;
+		left:2%;
+		position:absolute;
 	}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -30,16 +22,15 @@
 <!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script>
-/*$(function(){
+$(function(){
 	$(document).on("ready", function(){
 				
-		var fIdUsuarioDestino = localStorage.getItem("Id");
+		var fIdUser = window.localStorage.getItem("IdUser");
 		//$("#ID").val(" ");
 				
 		$.ajax({type: "POST",
-			url:"http://www.grupllobet.com/apptest/Incidencies/llista.php",
-			data:({IdUsuarioDestino: fIdUsuarioDestino}),
-			cache: false,
+			url:"http://158.109.8.89/php/ofertesUsuari.php",
+			data:({IdUser: fIdUser}),
 			dataType: "text",
 			success: Buscar
 			
@@ -48,7 +39,7 @@
 	function Buscar(data){
 		$('#llistat').html(data);		
 	}
-});	*/
+});	
 </script>
 </head>
 <body>
@@ -56,5 +47,8 @@
 	<div id="llistat">
 		
 	</div>	
+	<div id="Tornar">
+		<button type="button" onclick="window.location.href='mapa.html'">Tornar</button>
+	</div>
 </body>
 </html>

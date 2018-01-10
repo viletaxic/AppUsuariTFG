@@ -13,7 +13,7 @@
 		$(document).on("ready", function(){
 		
 			$.ajax({type: "POST",
-				url:"localhost/veure_poblacions.php",
+				url:"http://158.109.8.89/php/veure_poblacions.php",
 				cache: false,
 				dataType: "text",
 				success: Buscar_poblacions
@@ -46,8 +46,9 @@
 							$("#Email").val("");
 							$("#Passw").val("");
 							$("#Passw2").val("");
+							alert(fEmail);
 							$.ajax({type: "POST",
-								url:"localhost/registre.php",
+								url:"http://158.109.8.89/php/registre_users.php",
 								data:({Email: fEmail, Passw: fPassw}),
 								cache: false,
 								dataType: "text",

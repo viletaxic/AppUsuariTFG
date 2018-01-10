@@ -33,7 +33,7 @@
 			left:50%;
 			position:absolute;
 		}
-		/*#myDiv {
+		#myDiv {
 		   position: absolute;
 		   top: 0;
 		   left: 0;
@@ -53,7 +53,7 @@
 		}
 		#contingut2{
 			text-align: center;
-		}*/
+		}
 	</style>
 	<!--ESTILS DE BOOTSTRAP -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet"/>
@@ -79,7 +79,6 @@
 				llista[i].setMap(null);
 			}
 		}
-
 		
 		$(document).on("ready", function(){
 			
@@ -141,7 +140,6 @@
 				//PASSAR LES COORDENADES AL FORMULARI
 				formulari.find("input[name='LongX']").val(llista[1]);
 				formulari.find("input[name='LatY']").val(llista[0]);
-
 				window.localStorage.setItem("LatY", llista[0]);
 				window.localStorage.setItem("LongX", llista[1]);
 				
@@ -160,136 +158,110 @@
 				//UBICAR EL MARCADOR EN EL MAPA
 				marcador.setMap(mapa);		
 			
-				/*$.ajax({type: "POST", 
-					url: "http://www.grupllobet.com/apptest/App1/llista.php",
-					dataType: "text",
-					success:function(data){
-						if(data != null)
-						{
-							var dades = data.split("#");
-							var content_popup = "";
-							var popup = false;
-							
-							var i = 0;
-							var n = 1;
-							var d = 2;
-							var y = 3;
-							var x = 4;
-							var l = 5;
-							var im = 6;
-							var alerta = 7;
-							var alertaImagen = 8;
-							var alertaURL = 9;
-						
-							$.ajax({type: "POST", 
-								url: "http://www.grupllobet.com/apptest/App1/distancia.php",
-								dataType: "text",
-								success:function(data){
+				$.ajax({type: "POST", 
+				url: "http://158.109.8.89/php/mostrar_ofertes.php",
+				dataType: "text",
+				success:function(data){
+					if(data != null)
+					{
+						var dades = data.split("#");
+						var i = 0;
+						var n = 1;
+						var d = 2;
+						var y = 3;
+						var x = 4;
+						var f = 5;
+						var h = 6;
+						$.ajax({type: "POST", 
+							url: "http://158.109.8.89/php//distancia.php",
+							dataType: "text",
+							success:function(data){
+								
+								//AGAFO EL PARAMETRE VALOR DE LA TAULA CONFIG, ELS GUARDO EN UN STRING, I FAIG UN SPLIT PER SEPARAR-LOS I GUARDAR-LOS EN UN ARRAY.
+								var limits = data.split("#");
+								
+								for (;dades[i];) {
+								
+									var posiactual = new google.maps.LatLng(llista[0], llista[1]);
+								
+									//alert (posi1);
+									//OBTENIR LES COORDENADES DEL PUNT
+									var posi = new google.maps.LatLng(dades[y], dades[x]);
 									
-									//AGAFO EL PARAMETRE VALOR DE LA TAULA CONFIG, ELS GUARDO EN UN STRING, I FAIG UN SPLIT PER SEPARAR-LOS I GUARDAR-LOS EN UN ARRAY.
-									var limits = data.split("#");
+									var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
 									
-									for (;dades[i];) {
-									
-										var posiactual = new google.maps.LatLng(llista[0], llista[1]);
-									
-										//OBTENIR LES COORDENADES DEL PUNT
-										var posi = new google.maps.LatLng(dades[y], dades[x]);
+									//alert(distancia);
+									//SI LA DISTANCIA ÉS IGUAL O MENOR A 1000.
+									if(distancia <= limits[1]){
 										
-										var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
-										
-										//SI LA DISTANCIA ÉS IGUAL O MENOR A 1000.
-										if(distancia <= limits[1]){
+										//SI LA DISTANCIA ÉS MENOR A 20.
+										if(distancia <= limits[0]){
+											var marca = new google.maps.Marker({
+												idMarcador:dades[i],
+												position:posi,
+												icon:'imatges/green-dot.png',
+												titol: dades[n]
+											});
 											
-											//SI LA DISTANCIA ÉS MENOR A 20.
-											if(distancia <= limits[0]){
-												var marca = new google.maps.Marker({
-													idMarcador:dades[i],
-													position:posi,
-													icon:'../imatges/logo_grup_llobet.png',
-													titol: dades[n]
-												});
-												
-												if(dades[alerta] != null){
-													if(dades[alerta] != ""){
-														popup = true;
-														content_popup = content_popup+"</br>"+dades[alerta]+"</br><a href='http://www.grupllobet.com/apptest/App1/log_interaccionsalerta.php?url="+dades[alertaURL]+"&ID="+dades[i]+"&IdUser="+fIdUser+"'><img src='"+dades[alertaImagen]+"'></a></br></br></br>";
-														//$('#contingut2').html(dades[i]+"<button onclick='theFunction();'>tancar</button>");
-														//$('#myDiv').show();
-														
-													}
-												}
-												
-												var fIdMarca = dades[i];
-												var fIdUser = localStorage.getItem("Id");
-												$.ajax({type: "POST",
-													url: "http://www.grupllobet.com/apptest/App1/log_marcas.php",
-													data: ({IdUser: fIdUser, IdMarca: fIdMarca})
-												});
-												//UBICAR EL MARCADOR AL MAPA
-												marca.setMap(mapa);
-
-												
-												var infowindow = new google.maps.InfoWindow({
-													position: posi,
-													content: "<a href='http://www.grupllobet.com/apptest/App1/log_interaccions.php?url="+dades[l]+"&ID="+dades[i]+"&IdUser="+fIdUser+"'><img src='"+dades[im]+"'></a></br><a href='http://www.grupllobet.com/apptest/App1/log_interaccions.php?url="+dades[l]+"&ID="+dades[i]+"&IdUser="+fIdUser+"'>Visita</a></br>ID:"+dades[i]+"</br>Nom:"+dades[n]+"</br>Descripcio:"+dades[d]
-												});
+											//UBICAR EL MARCADOR AL MAPA
+											marca.setMap(mapa);
 											
-												infowindow.open(mapa,marca);
-												
-											}else{
-												var marca = new google.maps.Marker({
-													idMarcador:dades[i],
-													position:posi,
-													icon:'../imatges/logo_grup_llobet_negre.png',
-													titol: dades[n]
-												});
-												
-												//UBICAR EL MARCADOR AL MAPA
-												marca.setMap(mapa);
-											}									
-										}									
-										//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
-										marcadors_bd.push(marca);
+											/*var infowindow = new google.maps.InfoWindow({
+												position: posi,
+												content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+											});
 										
-										i=i+10;
-										n=n+10;
-										d=d+10;
-										y=y+10;
-										x=x+10;
-										l=l+10;
-										im=im+10;
-										alerta=alerta+10;
-										alertaImagen=alertaImagen+10;
-										alertaURL=alertaURL+10;
-									}
+											infowindow.open(mapa,marca);*/
+										
+										
+										}else{
+											var marca = new google.maps.Marker({
+												idMarcador:dades[i],
+												position:posi,
+												titol: dades[n]
+											});
+											//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
+											
+											
+											
+											//UBICAR EL MARCADOR AL MAPA
+											marca.setMap(mapa);
+										}
 									
-									if(popup != false){
-										$('#contingut').html(content_popup);
-										$('#myDiv').show();
 									}									
+									//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
+									marcadors_bd.push(marca);
 									
+									i=i+7;
+									n=n+7;
+									d=d+7;
+									y=y+7;
+									x=x+7;
+									f=f+7;
+									h=h+7;
+								
 								}
-							});
-						}
-					else
-						{
-							alert("No hi ha dades");
-						}
-					},
-					beforeSend:function(){
-					},
-					complete:function(){
+							}
+						});
 					}
-				});*/
+				else
+					{
+						alert("No hi ha dades");
+					}
+				},
+				beforeSend:function(){
+				
+				},
+				complete:function(){
+				
+				}
+			});
 				
 			}
 			
 			function Refrescar(){       
-
 				location.reload();
 			}
-
 			setInterval(Refrescar,30000);
 			
 		
@@ -325,7 +297,7 @@
 				</tr>
 			</table>
 		</form>
-	</div>
+	</div>-->
 	<div id='myDiv'>
 		<div id='contingut'>
 			
@@ -339,6 +311,6 @@
 				}
 			</script>
 		</div>
-	</div>	-->
+	</div>
 </body>
 </html>

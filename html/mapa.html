@@ -33,27 +33,6 @@
 			left:50%;
 			position:absolute;
 		}
-		#myDiv {
-		   position: absolute;
-		   top: 0;
-		   left: 0;
-		   width: 100vw;
-		   height: 100vh;
-		   background-color: rgba(0,0,0,0.6);
-		   z-index: 10;
-		   display: none;
-		}
-		#contingut{
-			background-color: white;
-			width:80%;
-			height:80%;
-			margin: auto;
-			text-align: center;
-			overflow: scroll;
-		}
-		#contingut2{
-			text-align: center;
-		}
 	</style>
 	<!--ESTILS DE BOOTSTRAP -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet"/>
@@ -300,19 +279,5 @@
 			</table>
 		</form>
 	</div>-->
-	<div id='myDiv'>
-		<div id='contingut'>
-			
-		</div>
-		<div id='contingut2'>
-			<button onclick='theFunction();'>tancar</button>
-						
-			<script type="text/javascript">
-				function theFunction(){
-					document.getElementById('myDiv').style.display = 'none';
-				}
-			</script>
-		</div>
-	</div>
 </body>
 </html>

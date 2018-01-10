@@ -174,7 +174,7 @@
 						var h = 6;
 						var im = 7;
 						$.ajax({type: "POST", 
-							url: "http://158.109.8.89/php//distancia.php",
+							url: "http://158.109.8.89/php/distancia.php",
 							dataType: "text",
 							success:function(data){
 								
@@ -209,7 +209,7 @@
 											
 											var infowindow = new google.maps.InfoWindow({
 												position: posi,
-												content: 'Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]+'</br'+dades[im]
+												content: 'Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]+'<IMG BORDER="0" ALIGN="Left" SRC="http://158.109.8.89/php/'+dades[im]+'">'
 											});
 										
 											infowindow.open(mapa,marca);

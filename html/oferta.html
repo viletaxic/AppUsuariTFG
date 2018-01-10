@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+<style>
+	#Oferta{	
+		left:2%;
+	}
+	#Tornar{
+		bottom:0px;
+		left:0px;
+	}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--ESTILS DE BOOTSTRAP -->
+<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Carregar GoogleMaps Api V3-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry" type="text/javascript"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script>
+$(function(){
+	$(document).on("ready", function(){
+		
+		function getParameterByName(name) {
+		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		    results = regex.exec(location.search);
+		    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}		
+		var fidOferta = getParameterByName('idOferta');;
+		//$("#ID").val(" ");
+				
+		$.ajax({type: "POST",
+			url:"http://158.109.8.89/php/oferta.php",
+			data:({idOferta: fidOferta}),
+			dataType: "text",
+			success: Buscar
+			
+		});
+	});
+	function Buscar(data){
+		$('#Oferta').html(data);		
+	}
+});	
+</script>
+</head>
+<body>
+	<h1>OFERTA</h1>
+	<div id="Oferta">
+		
+	</div>
+	<div id="Borrar">
+		<button id="borra" name="borra">Esborrar Oferta</button>
+	</div>
+	<div id="Tornar">
+		<button type="button" onclick="window.location.href='llistat_ofertes.html'">Tornar</button>
+	</div>
+</body>
+</html>

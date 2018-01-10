@@ -7,12 +7,12 @@
         version   = "1.0.0">
 
     <name>AppUsuariTFG</name>
-	<description>AppUsuariTFG</description>
-    
-
-
-
-    <!-- Define the main entry-point to the application -->
+	
+	
+	
+	
+	
+   <!-- Define the main entry-point to the application -->
     <content src="index.html" />
 
     <!-- Customize your app and platform with the preference element. -->

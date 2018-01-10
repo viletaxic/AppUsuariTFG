@@ -172,6 +172,7 @@
 						var x = 4;
 						var f = 5;
 						var h = 6;
+						var im = 7;
 						$.ajax({type: "POST", 
 							url: "http://158.109.8.89/php//distancia.php",
 							dataType: "text",
@@ -208,7 +209,7 @@
 											
 											var infowindow = new google.maps.InfoWindow({
 												position: posi,
-												content: 'Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+												content: 'Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]+'</br'+dades[im]
 											});
 										
 											infowindow.open(mapa,marca);
@@ -232,13 +233,14 @@
 									//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 									marcadors_bd.push(marca);
 									
-									i=i+7;
-									n=n+7;
-									d=d+7;
-									y=y+7;
-									x=x+7;
-									f=f+7;
-									h=h+7;
+									i=i+8;
+									n=n+8;
+									d=d+8;
+									y=y+8;
+									x=x+8;
+									f=f+8;
+									h=h+8;
+									im=im+8
 								
 								}
 							}

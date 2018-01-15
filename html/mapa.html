@@ -60,7 +60,15 @@
 		}*/
 		
 		$(document).on("ready", function(){
-			
+			$.ajax({type: "POST",
+				url:"http://158.109.8.89/php/borrat_automatic.php",
+				cache: false,
+				dataType: "text",
+				success: Borrar
+			});
+			function Borrar(data){
+
+			}
 			var formulari = $("#formulari");
 		
 			var defaultPos = new google.maps.LatLng(19.289168,-99.653440);

@@ -11,6 +11,15 @@
 	<script>
 	$(function(){
 		$(document).on("ready", function(){
+			$.ajax({type: "POST",
+				url:"http://158.109.8.89/php/borrat_automatic.php",
+				cache: false,
+				dataType: "text",
+				success: Borrar
+			});
+			function Borrar(data){
+
+			}
 			$("#ferlogin").click(function(){
 				alert("click");
 				var fEmail = $("#Email").val();

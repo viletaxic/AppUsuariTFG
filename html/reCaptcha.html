@@ -19,12 +19,20 @@
 <!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
 
 <script>
 $(function(){
 	$(document).on("ready", function(){
-		
+		$.ajax({  
+			type: "POST",  
+			url:"http://158.109.8.89/php/prova.php",
+			success: function escriurecaptcha(data){
+				//alert(data);
+				//document.getElementById('escriurecaptcha').value = data;
+				$("#escriurecaptcha").html(data);
+			}
+		});
 		function getParameterByName(name) {
 		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 		    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -64,7 +72,10 @@ $(function(){
 	<h1>SUPERA EL REPTE</h1>
 	<!--------INICIA FORMULARIO------>
 		<form id='myform'>		
-			<div class="g-recaptcha" data-sitekey="6LePTkAUAAAAADGz7lmlhvlCIb7qgEOYvHeRz3xs"></div>
+			<div id='escriurecaptcha'>
+				
+			</div>	
+			<!--<div class="g-recaptcha" data-sitekey="6LePTkAUAAAAADGz7lmlhvlCIb7qgEOYvHeRz3xs"></div>-->
 
 			<div data-role="fieldcontain">
 				<label for="ID"></label>

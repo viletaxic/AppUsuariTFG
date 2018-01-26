@@ -159,8 +159,9 @@
 						var x = 4;
 						var f = 5;
 						var h = 6;
-						var ur = 7
-						var im = 8;
+						var ur = 7;
+						var di = 8;
+						var im = 9;
 						$.ajax({type: "POST", 
 							url: "http://158.109.8.89/php/distancia.php",
 							dataType: "text",
@@ -197,7 +198,7 @@
 											
 											var infowindow = new google.maps.InfoWindow({
 												position: posi,
-												content: 'Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]+'</br><a href="'+dades[ur]+'"><IMG BORDER="0" ALIGN="Left" SRC="http://158.109.8.89/php/'+dades[im]+'" width="120" height="120"></a>'
+												content: 'Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Direccio:'+dades[di]+'</br>Caducitat:'+dades[f]+'-'+dades[h]+'</br><a href="'+dades[ur]+'"><IMG BORDER="0" ALIGN="Left" SRC="http://158.109.8.89/php/'+dades[im]+'" width="120" height="120"></a>'
 											});
 										
 											infowindow.open(mapa,marca);
@@ -221,15 +222,16 @@
 									//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 									marcadors_bd.push(marca);
 									
-									i=i+9;
-									n=n+9;
-									d=d+9;
-									y=y+9;
-									x=x+9;
-									f=f+9;
-									h=h+9;
-									ur=ur+9;
-									im=im+9;
+									i=i+10;
+									n=n+10;
+									d=d+10;
+									y=y+10;
+									x=x+10;
+									f=f+10;
+									h=h+10;
+									ur=ur+10;
+									di=di+10;
+									im=im+10;
 								
 								}
 							}

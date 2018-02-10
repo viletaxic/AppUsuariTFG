@@ -18,10 +18,8 @@
 				success: Borrar
 			});
 			function Borrar(data){
-
 			}
 			$("#ferlogin").click(function(){
-				alert("click");
 				var fEmail = $("#Email").val();
 				var fPassw = $("#Passw").val();
 				
@@ -43,13 +41,11 @@
 					alert("Login incorrecte");
 				}
 				else{
+					alert("Login correcte");
 					window.localStorage.setItem("IdUser", dades[0]);
 					window.localStorage.setItem("Email", dades[1]);
 					window.location.href="html/mapa.html";
 				}			
-				/** GUARDAMOS DATOS EN localStorage **/		
-				//window.localStorage.setItem("id_user", data.id_user);
-				//window.localStorage.setItem("username", data.username);
 			}
 		});
 	});
@@ -73,7 +69,6 @@
 					</tr>
 					<tr>
 						<td></td>
-						<!--<td><input type="button" onclick="location.href='html/mapa.html';" value="Entrar" /></td>-->
 						<td><button type="button" id="ferlogin">Entrar</button></td>
 					</tr>
 				</table>

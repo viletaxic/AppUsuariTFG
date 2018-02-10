@@ -46,7 +46,6 @@
 							$("#Email").val("");
 							$("#Passw").val("");
 							$("#Passw2").val("");
-							alert(fEmail);
 							$.ajax({type: "POST",
 								url:"http://158.109.8.89/php/registre_users.php",
 								data:({Email: fEmail, Passw: fPassw}),

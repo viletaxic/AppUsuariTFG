@@ -20,7 +20,6 @@
 </head>
 <body>
 	<h1>SUPERA EL REPTE</h1>
-	<!--------INICIA FORMULARIO------>
 
 		<form name="review" METHOD="POST" id="formulari" onSubmit="return false">
 			<input type="hidden" name="ID" id="ID" value="" />
@@ -29,25 +28,18 @@
 			<input type="hidden" id="txtCaptcha" /></br>
 			<input type="text" name="txtInput" id="txtInput" size="15" /></br>
 			</br><input type="submit" value="Submit"/>
-		</form>
-
-        
-        
+		</form>     
 
 <script>
-
 	$(document).ready(function() {
-
 		function getParameterByName(name) {
 		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 		    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 		    results = regex.exec(location.search);
 		    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}	
-
 		document.getElementById('ID').value = getParameterByName('idOferta');
 		document.getElementById('IdUsuari').value = window.localStorage.getItem("IdUser");
-
 		
 		var fidOferta = getParameterByName('idOferta');
 		var fIdUsuari = window.localStorage.getItem("IdUser");	
@@ -58,7 +50,6 @@
 												
 			function checkform(theform){
 				var why = "";
-
 				if(theform.txtInput.value == ""){
 					why += "S'ha d'emplenar el codi\n";
 				}
@@ -73,27 +64,23 @@
 					return false;
 				}
 			}
-
 			//Generates the captcha function
 			var a = Math.ceil(Math.random() * 9)+ '';
 			var b = Math.ceil(Math.random() * 9)+ '';
 			var c = Math.ceil(Math.random() * 9)+ '';
 			var d = Math.ceil(Math.random() * 9)+ '';
 			var e = Math.ceil(Math.random() * 9)+ '';
-
 			var code = a + b + c + d + e;
 			document.getElementById("txtCaptcha").value = code;
 			document.getElementById("txtCaptchaDiv").innerHTML = code;
-
 			// Validate the Entered input aganist the generated security code function
 			function ValidCaptcha(){
 				var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
-				//alert(str1);
+
 				var str2 = removeSpaces(document.getElementById('txtInput').value);
-				//alert(str2);
+
 				if (str1 == str2){
-					
-					//alert("esta ok");
+
 					
 					$.ajax({type: "POST",
 						url:"http://158.109.8.89/php/reCaptcha.php",
@@ -110,7 +97,6 @@
 					return false;
 				}
 			}
-
 			
 			// Remove the spaces from the entered and generated code
 			function removeSpaces(string){
@@ -118,9 +104,6 @@
 			}
 						
 		   
-
-
-
 	});	
 </script>        
 <div id="Tornar">

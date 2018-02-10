@@ -11,22 +11,11 @@
 			left:0px;
 			right:0px;
 		}
-		/*#infor{
-			bottom:0px;
-			left:0px;
-			position:absolute;
-			display: none;
-		}*/
 		#refresh{
 			bottom:0px;
 			right:0px;
 			position:absolute;
 		}
-		/*#form{
-			bottom:0px;
-			left:0px;
-			position:absolute;
-		}*/
 		#llista{
 			bottom:0px;
 			right:50%;
@@ -48,16 +37,6 @@
 		var marcadors_nous = [];
 		var marcadors_bd = [];
 		var mapa = null;
-		//FUNCIO PER TREURE MARCADORS DEL MAPA
-		/*function treure_marcadors(llista)
-		{
-			//RECORRE L'ARRAY DE MARCADORS	
-			for(i in llista)
-			{
-				//TREURE MARCADOR DEL MAPA
-				llista[i].setMap(null);
-			}
-		}*/
 		
 		$(document).on("ready", function(){
 			$.ajax({type: "POST",
@@ -67,7 +46,6 @@
 				success: Borrar
 			});
 			function Borrar(data){
-
 			}
 			var formulari = $("#formulari");
 		
@@ -174,13 +152,11 @@
 								
 									var posiactual = new google.maps.LatLng(llista[0], llista[1]);
 								
-									//alert (posi1);
 									//OBTENIR LES COORDENADES DEL PUNT
 									var posi = new google.maps.LatLng(dades[y], dades[x]);
 									
 									var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
 									
-									//alert(distancia);
 									//SI LA DISTANCIA ÉS IGUAL O MENOR A 1000.
 									if(distancia <= limits[1]){
 										
@@ -272,24 +248,6 @@
 		
 		<input type="button" id="llista" onclick="location.href='llistat_ofertes.html';" value="Ofertes" />
 		
-		<!--<input type="button" id="form" onclick="location.href='formulari.html';" value="Formulari" />-->
-		
 	</div>
-	
-	
-	<!--<div id="infor">
-		<form id="formulari">
-			<table>				
-				<tr>
-					<td><label for="LatY">Latitud:</label></td>
-					<td><input type="text" disabled="disabled" name="LatY" id="LatY" value=""  /></td>
-				</tr>
-				<tr>
-					<td><label for="LongX">Longitud:</label></td>
-					<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
-				</tr>
-			</table>
-		</form>
-	</div>-->
 </body>
 </html>

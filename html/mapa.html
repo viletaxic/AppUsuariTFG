@@ -56,22 +56,20 @@
 					MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
 				}
 				function falla(error) {
-					//si falla mostrar mpara en posicion por defecto
+					
 					alert('Error en servicio Geolocalizador');
 					MuestraMapa(defaultPos); 
 				}
 				
-				//maximumAge- Guarda la posicion por x minutos 
-				//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
-				//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 15 segundos
+				
 				var options = {maximumAge: 30000, enableHighAccuracy:true, timeout: 15000};
 				navigator.geolocation.getCurrentPosition(exito, falla, options );
-			}//FIN IF
+			}
 			else {
 				MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
 			}	
 			 
-			//FUNCION DIBUJAR MAPa
+			//MAPA
 			function MuestraMapa(latlng) {
 				var config = {
 				zoom: 16,
@@ -81,10 +79,7 @@
 				
 				mapa = new google.maps.Map(document.getElementById("mapa"), config);
 				
-				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
-				//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
-				//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
-				//alert(event.latLng);
+				
 				//COORDENADES
 				var coordenades = String(latlng);//event.latLng.toString();
 				

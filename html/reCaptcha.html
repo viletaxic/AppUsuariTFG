@@ -64,7 +64,7 @@
 					return false;
 				}
 			}
-			//Generates the captcha function
+			
 			var a = Math.ceil(Math.random() * 9)+ '';
 			var b = Math.ceil(Math.random() * 9)+ '';
 			var c = Math.ceil(Math.random() * 9)+ '';
@@ -73,14 +73,11 @@
 			var code = a + b + c + d + e;
 			document.getElementById("txtCaptcha").value = code;
 			document.getElementById("txtCaptchaDiv").innerHTML = code;
-			// Validate the Entered input aganist the generated security code function
+			
 			function ValidCaptcha(){
 				var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
-
 				var str2 = removeSpaces(document.getElementById('txtInput').value);
-
 				if (str1 == str2){
-
 					
 					$.ajax({type: "POST",
 						url:"http://158.109.8.89/php/reCaptcha.php",
@@ -98,7 +95,7 @@
 				}
 			}
 			
-			// Remove the spaces from the entered and generated code
+			
 			function removeSpaces(string){
 				return string.split(' ').join('');
 			}
